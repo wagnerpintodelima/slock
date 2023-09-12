@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Empresa - Novo{% endblock %}
+
+
+{% block body %}
+<div class="pagetitle">
+  <h1>Empresa</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+      <li class="breadcrumb-item active">Empresa</li>
+    </ol>
+  </nav>
+</div><!-- End Page Title -->
+
+<section class="section dashboard">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Cadastro</h5>
+
+          <!-- Vertical Form -->
+          <form class="row g-3">
+            <div class="col-lg-6">
+              <label for="inputAddress" class="form-label">Razão Social</label>
+              <input type="text" class="form-control" id="inputAddress" placeholder="Razão Social">
+            </div>
+            <div class="col-lg-6">
+              <label for="inputNanme5" class="form-label">Nome Fantasia</label>
+              <input type="text" class="form-control" id="inputNanme5" placeholder="Nome Fantasia">
+            </div>
+            <div class="col-lg-6">
+              <label for="inputNanme6" class="form-label">E-mail</label>
+              <input type="text" class="form-control" id="inputNanme6" placeholder="E-mail">
+            </div>
+            <div class="col-lg-6">
+              <label for="inputNanme7" class="form-label">CNPJ</label>
+              <input type="text" class="form-control" id="inputNanme7" placeholder="CNPJ">
+            </div>
+            <div class="col-lg-6">
+              <label for="inputNanme9" class="form-label">Telefone</label>
+              <input type="text" class="form-control" id="inputNanme9" placeholder="(xx)x.xxxx-xxxx">
+            </div>
+            <div class="col-lg-6">
+              <label for="inputNanme8" class="form-label">CEP</label>
+              <input type="text" class="form-control" id="inputNanme8" placeholder="CEP">
+            </div>
+            <div class="col-lg-6">
+              <label for="inputNanme10" class="form-label">UF</label>
+              <input type="text" class="form-control" id="inputNanme10" placeholder="UF">
+            </div>
+            <div class="col-lg-6">
+              <label for="inputNanme11" class="form-label">Cidade</label>
+              <input type="text" class="form-control" id="inputNanme11" placeholder="Cidade">
+            </div>
+            <div class="col-lg-6">
+              <label for="inputNanme11" class="form-label">Bairro</label>
+              <input type="text" class="form-control" id="inputNanme11" placeholder="Cidade">
+            </div>
+            <div class="col-lg-6">
+              <label for="inputNanme11" class="form-label">Rua</label>
+              <input type="text" class="form-control" id="inputNanme11" placeholder="Cidade">
+            </div>
+            <div class="col-lg-6">
+              <label for="inputNanme11" class="form-label">Nº</label>
+              <input type="text" class="form-control" id="inputNanme11" placeholder="Cidade">
+            </div>
+            <div class="col-lg-6">
+              <label for="inputNanme11" class="form-label">Observação</label>
+              <textarea class="form-control" id="" placeholder="Observação"></textarea>
+            </div>
+            <div class="col-lg-6 col">
+              <label for="formFileLg" class="form-label">Logo</label>
+              <input class="form-control form-control-lg" id="formFileLg" type="file">
+            </div>
+            <div class="col-lg-6 col">
+              <label for="formFileLg" class="form-label">Banner</label>
+              <input class="form-control form-control-lg" id="formFileLg" type="file">
+            </div>
+            <div class="col-lg-12 d-flex justify-content-end">
+              <div class="col-lg-11 col-xs-12">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+                <button type="reset" class="btn btn-secondary">Limpar</button>
+              </div>
+              <div class="col-lg-1 col-xs-12">
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
+                  <label class="form-check-label" for="flexSwitchCheckChecked">Ativo</label>
+                </div>
+              </div>
+            </div>
+          </form><!-- Vertical Form -->
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+{% endblock %}

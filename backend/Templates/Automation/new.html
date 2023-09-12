@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Automação - Novo{% endblock %}
+
+
+{% block body %}
+<div class="pagetitle">
+  <h1>Automação</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+      <li class="breadcrumb-item active">Automação</li>
+    </ol>
+  </nav>
+</div><!-- End Page Title -->
+
+<section class="section dashboard">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Cadastro</h5>
+
+          <!-- Vertical Form -->
+          <form class="row g-3">
+            <div class="col-lg-6">
+              <label for="inputNanme4" class="form-label">Tipo</label>
+              <select id="inputNanme4" class="form-select">
+                <option selected>Selecione...</option>
+                <option value="">Slock</option>
+                <option value="">Luz</option>
+                <option value="">Portão</option>
+                <option value="">Porta</option>
+              </select>
+            </div>
+            <div class="col-lg-6">
+              <label for="inputAddress" class="form-label">Nome Curto</label>
+              <input type="text" class="form-control" id="inputAddress" placeholder="Short name">
+            </div>
+            <div class="col-lg-6">
+              <label for="inputNanme5" class="form-label">IP</label>
+              <input type="text" class="form-control" id="inputNanme5" placeholder="IP: xxx.xxx.xxx.xxx">
+            </div>
+            <div class="col-lg-6">
+              <label for="inputNanme6" class="form-label">Subnet</label>
+              <input type="text" class="form-control" id="inputNanme6" placeholder="Subnet: xxx.xxx.xxx.xxx">
+            </div>
+            <div class="col-lg-6">
+              <label for="inputNanme7" class="form-label">Gateway</label>
+              <input type="text" class="form-control" id="inputNanme7" placeholder="Gateway: xxx.xxx.xxx.xxx">
+            </div>
+            <div class="col-lg-6">
+              <label for="inputNanme9" class="form-label">Mac</label>
+              <input type="text" class="form-control" id="inputNanme9" placeholder="MAC: CA:FE:CO:FF:EE:EE">
+            </div>
+            <div class="col-lg-6">
+              <label for="inputNanme8" class="form-label">Local Instalação</label>
+              <input type="text" class="form-control" id="inputNanme8" placeholder="Ex. Garagem, entrada, hall de entrada...">
+            </div>
+             <div class="col-lg-6">
+              <label for="description" class="form-label">Descrição</label>
+              <textarea id="description" class="form-control" placeholder="Descrição"></textarea>
+            </div>
+            <div class="col-lg-12 d-flex justify-content-end">
+              <div class="col-lg-11 col-xs-12">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+                <button type="reset" class="btn btn-secondary">Limpar</button>
+              </div>
+              <div class="col-lg-1 col-xs-12">
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
+                  <label class="form-check-label" for="flexSwitchCheckChecked">Ativo</label>
+                </div>
+              </div>
+            </div>
+          </form><!-- Vertical Form -->
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+{% endblock %}

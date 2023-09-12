@@ -5,4 +5,4 @@ from django.contrib import messages
 
 def newView(request):
     context = {}
-    return render(request, 'Automation/new.html', context)
+    return render(request, 'Company/new.html', context)
