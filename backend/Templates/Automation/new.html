@@ -21,46 +21,51 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Cadastro</h5>
-
           <!-- Vertical Form -->
-          <form class="row g-3">
+          <form class="row g-3" method="post" action="{% url 'AutomationSaveAction' %}">
+            {% csrf_token %}
             <div class="col-lg-6">
               <label for="inputNanme4" class="form-label">Tipo</label>
-              <select id="inputNanme4" class="form-select">
-                <option selected>Selecione...</option>
-                <option value="">Slock</option>
-                <option value="">Luz</option>
-                <option value="">Portão</option>
-                <option value="">Porta</option>
+              <select id="inputNanme4" class="form-select" required name="name">
+                <option value="slocker">Slock</option>
+                <option value="light">Luz</option>
+                <option value="gate">Portão</option>
+                <option value="door">Porta</option>
               </select>
             </div>
             <div class="col-lg-6">
               <label for="inputAddress" class="form-label">Nome Curto</label>
-              <input type="text" class="form-control" id="inputAddress" placeholder="Short name">
+              <input type="text" class="form-control" id="inputAddress" placeholder="Short name" required name="short_name">
             </div>
             <div class="col-lg-6">
               <label for="inputNanme5" class="form-label">IP</label>
-              <input type="text" class="form-control" id="inputNanme5" placeholder="IP: xxx.xxx.xxx.xxx">
+              <input type="text" class="form-control" id="inputNanme5" placeholder="IP: xxx.xxx.xxx.xxx" name="ip">
             </div>
             <div class="col-lg-6">
               <label for="inputNanme6" class="form-label">Subnet</label>
-              <input type="text" class="form-control" id="inputNanme6" placeholder="Subnet: xxx.xxx.xxx.xxx">
+              <input type="text" class="form-control" id="inputNanme6" placeholder="Subnet: xxx.xxx.xxx.xxx" name="subnet">
             </div>
             <div class="col-lg-6">
               <label for="inputNanme7" class="form-label">Gateway</label>
-              <input type="text" class="form-control" id="inputNanme7" placeholder="Gateway: xxx.xxx.xxx.xxx">
+              <input type="text" class="form-control" id="inputNanme7" placeholder="Gateway: xxx.xxx.xxx.xxx" name="gateway">
             </div>
             <div class="col-lg-6">
               <label for="inputNanme9" class="form-label">Mac</label>
-              <input type="text" class="form-control" id="inputNanme9" placeholder="MAC: CA:FE:CO:FF:EE:EE">
+              <input type="text" class="form-control" id="inputNanme9" placeholder="MAC: CA:FE:CO:FF:EE:EE" required name="mac">
             </div>
             <div class="col-lg-6">
               <label for="inputNanme8" class="form-label">Local Instalação</label>
-              <input type="text" class="form-control" id="inputNanme8" placeholder="Ex. Garagem, entrada, hall de entrada...">
+              <select id="inputNanme8" class="form-select" required name="name">
+                <option value="0">Garagem</option>
+                <option value="1">Hall de Entrada</option>
+                <option value="2">Hall de Saída</option>
+                <option value="3">Salão de Festa</option>
+                <option value="4">Outros</option>
+              </select>
             </div>
              <div class="col-lg-6">
               <label for="description" class="form-label">Descrição</label>
-              <textarea id="description" class="form-control" placeholder="Descrição"></textarea>
+              <textarea id="description" class="form-control" placeholder="Descrição" name="description"></textarea>
             </div>
             <div class="col-lg-12 d-flex justify-content-end">
               <div class="col-lg-11 col-xs-12">
@@ -69,7 +74,7 @@
               </div>
               <div class="col-lg-1 col-xs-12">
                 <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
+                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="" name="status" value="1">
                   <label class="form-check-label" for="flexSwitchCheckChecked">Ativo</label>
                 </div>
               </div>

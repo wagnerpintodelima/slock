@@ -207,6 +207,7 @@ class Automation(models.Model):
     name = models.CharField(max_length=50)
     short_name = models.CharField(max_length=15)
     description = models.TextField()
+    type_location = models.IntegerField()
     status = models.IntegerField()
     created_at = models.DateTimeField()
     created_by = models.IntegerField()

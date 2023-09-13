@@ -36,7 +36,7 @@
 <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-        <a href="index.html" class="logo d-flex align-items-center">
+        <a href="{% url 'indexView' %}" class="logo d-flex align-items-center">
             <img src="{% static 'backend/img/logo.png' %}" alt="">
             <span class="d-none d-lg-block">AutenPRO</span>
         </a>
@@ -307,7 +307,7 @@
             </a>
             <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="#">
+                    <a href="{% url 'CompanyNewAction' %}">
                         <i class="bi bi-circle"></i><span>Empresa</span>
                     </a>
                 </li>
@@ -322,7 +322,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{% url 'AutomationNewAction' %}">
                         <i class="bi bi-circle"></i><span>Automação</span>
                     </a>
                 </li>
