@@ -1,5 +1,8 @@
+import os
+import json
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from backend.Controller.BaseController import saveFile
@@ -12,9 +15,8 @@ def newView(request):
     return render(request, 'Company/new.html', context)
 
 
-
 @login_required
-def SaveAction(request):
+def saveAction(request):
 
     if request.method == 'POST':
         razaoSocial = request.POST.get('razaoSocial', None)
@@ -55,4 +57,43 @@ def SaveAction(request):
 
         messages.add_message(request, messages.SUCCESS, 'Registro salvo com sucesso!')
 
-    return redirect('CompanyNewAction')
+    return redirect('CompanyNewView')
+
+def indexView(request):
+    data = Company.objects.filter(status=True)
+
+    context = {
+        'data': data
+    }
+
+    return render(request, 'Company/index.html', context)
+
+
+@login_required
+def deleteAction(request, company_id):
+
+    item = Company.objects.get(id=company_id)
+
+    try:
+        os.remove(_PATH_FILE_COMPANY + item.logo)
+    except Exception as er:
+        messages.add_message(request, messages.ERROR, "Ocorreu esse erro ao tentar deletar a logo: {}".format(er))
+
+    try:
+        os.remove(_PATH_FILE_COMPANY + item.picture)
+    except Exception as er:
+        messages.add_message(request, messages.ERROR, "Ocorreu esse erro ao tentar deletar a logo: {}".format(er))
+
+    try:
+        item.delete()
+        messages.add_message(request, messages.SUCCESS, "Excluído com sucesso!")
+    except Exception as e:
+        messages.add_message(request, messages.ERROR, "Ocorreu esse erro: {}".format(e))
+
+
+    context = {
+        'status': 200,
+        'descricao': 'Excluído com sucesso'
+    }
+
+    return HttpResponse(json.dumps(context, ensure_ascii=False), content_type="application/json")
