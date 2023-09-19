@@ -26,6 +26,7 @@
     <link href="{% static 'backend/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
     <link href="{% static 'backend/vendor/simple-datatables/style.css' %}" rel="stylesheet">
     <link href="{% static 'backend/node_modules/sweetalert2/dist/sweetalert2.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'backend/node_modules/jquery-toast-plugin/src/jquery.toast.css' %}">
 
     <!-- Template Main CSS File -->
     <link href="{% static 'backend/css/style.css' %}" rel="stylesheet">
@@ -384,7 +385,6 @@
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 </div>
 <!-- Vendor JS Files -->
-{% block js %}{% endblock %}
 <script src="{% static 'backend/node_modules/jquery/dist/jquery.min.js' %}"></script>
 <script src="{% static 'backend/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 <script src="{% static 'backend/node_modules/sweetalert2/dist/sweetalert2.min.js' %}"></script>
@@ -392,9 +392,51 @@
 <script src="{% static 'backend/vendor/tinymce/tinymce.min.js' %}"></script>
 <script src="{% static 'backend/vendor/simple-datatables/simple-datatables.js' %}"></script>
 <script src="{% static 'backend/js/vueBase.js' %}"></script>
+<script src="{% static 'backend/node_modules/jquery-toast-plugin/src/jquery.toast.js' %}"></script>
 
 <!-- Template Main JS File -->
 <script src="{% static 'backend/js/main.js' %}"></script>
 
+<script type="text/javascript">
+		$(function(){
+
+			let time = 4E3;
+
+			{% if messages %}
+			{% for message in messages %}
+				{% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+					$.toast({
+						heading: 'Atenção',
+						text: '{{ message }}',
+						showHideTransition: 'slide',
+						icon: 'success',
+						hideAfter: time,
+						position: 'top-right', // bottom-left or bottom-right or bottom-center or top-left or top-right or top-center or mid-center or an object representing the left, right, top, bottom values
+					});
+				{% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+					$.toast({
+						heading: 'Atenção',
+						text: '{{ message }}',
+						showHideTransition: 'slide',
+						icon: 'error',
+						hideAfter: time,
+						position: 'top-right', // bottom-left or bottom-right or bottom-center or top-left or top-right or top-center or mid-center or an object representing the left, right, top, bottom values
+					});
+				{% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+					$.toast({
+						heading: 'Atenção',
+						text: '{{ message }}',
+						showHideTransition: 'slide',
+						icon: 'warning',
+						hideAfter: time,
+						position: 'top-right', // bottom-left or bottom-right or bottom-center or top-left or top-right or top-center or mid-center or an object representing the left, right, top, bottom values
+					});
+				{% endif %}
+			{% endfor %}
+			{% endif %}
+
+		});
+	</script>
+    {% block js %}{% endblock %}
 </body>
 </html>

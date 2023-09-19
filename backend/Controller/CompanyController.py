@@ -14,6 +14,47 @@ def newView(request):
     context = {}
     return render(request, 'Company/new.html', context)
 
+def editView(request, company_id):
+     item = Company.objects.get(id=company_id)
+     return render(request, 'Company/edit.html', {
+         'item': item
+     })
+
+def editAction(request, company_id):
+    item = Company.objects.get(id=company_id)
+
+    if request.method == 'POST' and item:
+        razaoSocial = request.POST.get('razaoSocial', None)
+        nomeFantasia = request.POST.get('nomeFantasia', None)
+        email = request.POST.get('email', None)
+        cnpj = request.POST.get('cnpj', None)
+        telefone = request.POST.get('telefone', None)
+        cep = request.POST.get('cep', None)
+        uf = request.POST.get('uf', 0)
+        bairro = request.POST.get('bairro', None)
+        rua = request.POST.get('rua', None)
+        numero = request.POST.get('numero', None)
+        cidade = request.POST.get('cidade', None)
+        observacao = request.POST.get('observacao', None)
+        status = request.POST.get('status', 0)
+
+        item.razao_social = razaoSocial
+        item.nome_fantasia = nomeFantasia
+        item.email = email
+        item.cpf_cnpj = cnpj
+        item.phone_number = telefone
+        item.cep = cep
+        item.uf = uf
+        item.neighborhood = bairro
+        item.street = rua
+        item.house_number = numero
+        item.city = cidade
+        item.observation = observacao
+        item.status = status
+        item.save()
+        messages.add_message(request, messages.SUCCESS, 'Registro modificado com sucesso!')
+
+    return redirect('CompanyIndexView')
 
 @login_required
 def saveAction(request):
@@ -57,17 +98,16 @@ def saveAction(request):
 
         messages.add_message(request, messages.SUCCESS, 'Registro salvo com sucesso!')
 
-    return redirect('CompanyNewView')
+    return redirect('CompanyIndexView')
 
 def indexView(request):
-    data = Company.objects.filter(status=True)
+    data = Company.objects.all()
 
     context = {
         'data': data
     }
 
     return render(request, 'Company/index.html', context)
-
 
 @login_required
 def deleteAction(request, company_id):
