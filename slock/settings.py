@@ -11,10 +11,11 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
-import django_settings_export
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+DOMAIN_ASSETS = 'slock.com.br/media/backend/upload'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -65,17 +66,10 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-                'django_settings_export.settings_export',
+                'django.contrib.messages.context_processors.messages'
             ],
         },
     },
-]
-
-DOMAIN_ASSETS = 'slock.com.br/media/backend/upload'
-
-SETTINGS_EXPORT = [
-    'DOMAIN_ASSETS',
 ]
 
 WSGI_APPLICATION = 'slock.wsgi.application'
