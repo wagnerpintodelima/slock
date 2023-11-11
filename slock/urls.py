@@ -18,6 +18,7 @@ from django.urls import path, include
 from backend.Controller import AutomationController
 
 urlpatterns = [
+    path('/', include('backend.urls')),
     path('admin/', admin.site.urls),
     path('gestao/', include('backend.urls')),
 ]
