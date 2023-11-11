@@ -33,6 +33,12 @@
         {% for item in data %}
         <tr>
           <td>{{ item.id }}</td>
+          <td>
+            <img src="{{ settings.DOMAIN_ASSETS }}/company/{{ item.picture }}" alt="Foto">
+          </td>
+          <td>
+            <img src="{{ settings.DOMAIN_ASSETS }}/company/{{ item.logo }}" alt="Banner">
+          </td>
           <td>{{ item.razao_social }}</td>
           <td>{{ item.created_at }}</td>
           <td>
