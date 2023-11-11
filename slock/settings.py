@@ -29,7 +29,8 @@ ALLOWED_HOSTS = [
     'slock.com.br',
     'www.slock.com.br',
     'localhost',
-    '216.59.16.63'
+    '216.59.16.63',
+    '*'
 ]
 
 CORS_ORIGIN_ALLOW_ALL = False
