@@ -32,6 +32,11 @@ ALLOWED_HOSTS = [
     '216.59.16.63'
 ]
 
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost',
+    'https://slock.com.br'
+)
 
 # Application definition
 
