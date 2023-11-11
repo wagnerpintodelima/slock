@@ -25,20 +25,7 @@ SECRET_KEY = 'django-insecure-or90-4b_^h0w4j)%nld(2npov#-6y9+sm&t_)6f23!4!pmu6ly
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    'slock.com.br',
-    'www.slock.com.br',
-    'localhost',
-    '127.0.0.1',
-    '216.59.16.63',
-    '*'
-]
-
-CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = (
-    'http://localhost',
-    'https://slock.com.br'
-)
+ALLOWED_HOSTS = ['slock.com.br']
 
 # Application definition
 
