@@ -28,6 +28,9 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'slock.com.br',
     'www.slock.com.br',
+    'http://slock.com.br',
+    'https://www.slock.com.br',
+    'https://slock.com.br',
     'localhost',
     '216.59.16.63',
     '*'
