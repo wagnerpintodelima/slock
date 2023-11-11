@@ -7,6 +7,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from backend.Controller.BaseController import saveFile
 from backend.models import Company
+from slock.settings import DOMAIN_ASSETS
 
 _PATH_FILE_COMPANY = 'backend/upload/company/'
 
@@ -104,7 +105,8 @@ def indexView(request):
     data = Company.objects.all()
 
     context = {
-        'data': data
+        'data': data,
+        'DOMAIN_ASSETS': DOMAIN_ASSETS
     }
 
     return render(request, 'Company/index.html', context)
