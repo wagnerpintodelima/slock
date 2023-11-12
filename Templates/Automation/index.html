@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Empresa - Lista{% endblock %}
+{% block title %}Automações - Lista{% endblock %}
 
 
 {% block body %}
 <div class="pagetitle">
-  <h1>Empresas</h1>
+  <h1>Automação</h1>
   <nav>
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-      <li class="breadcrumb-item active">Empresas</li>
+      <li class="breadcrumb-item active">Automação</li>
     </ol>
   </nav>
 </div><!-- End Page Title -->
@@ -23,9 +23,11 @@
         <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Logo</th>
-          <th scope="col">Banner</th>
+          <th scope="col">Empresa</th>
+          <th scope="col">Tipo</th>
           <th scope="col">Nome</th>
+          <th scope="col">MAC</th>
+          <th scope="col">Local</th>
           <th scope="col">Criado em</th>
           <th scope="col">Status</th>
           <th scope="col">Ações</th>
@@ -35,13 +37,33 @@
         {% for item in data %}
         <tr>
           <td>{{ item.id }}</td>
+          <td>{{ item.company.nome_fantasia }}</td>
           <td>
-            <img src="{{ DOMAIN_ASSETS }}/company/{{ item.picture }}.png" alt="Foto" width="200px">
+            {% if item.name == '0' %}
+            Slock
+            {% elif item.name == '1' %}
+            Luz
+            {% elif item.name == '2' %}
+            Portão
+            {% elif item.name == '3' %}
+            Porta
+            {% endif %}
           </td>
+          <td>{{ item.short_name | capfirst }}</td>
+          <td>{{ item.mac | upper }}</td>
           <td>
-            <img src="{{ DOMAIN_ASSETS }}/company/{{ item.logo }}.png" alt="Banner" width="200px">
+            {% if item.type_location == 0 %}
+            Garagem
+            {% elif item.type_location == 1 %}
+            Hall de Entrada
+            {% elif item.type_location == 2 %}
+            Hall de Saída
+            {% elif item.type_location == 3 %}
+            Salão de festas
+            {% elif item.type_location == 4 %}
+            Outros
+            {% endif %}
           </td>
-          <td>{{ item.razao_social }}</td>
           <td>{{ item.created_at }}</td>
           <td>
             {% if item.status %}
@@ -58,15 +80,12 @@
                 <span class="visually-hidden">Opções</span>
               </button>
               <ul class="dropdown-menu">
-                <li>
-                  <a class="dropdown-item" href="{% url 'CompanyEditView' item.id %}"><i class="bi bi-sliders"></i> Editar</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#"><i class="bx bxs-file-jpg"></i> Imagem</a>
-                </li>
+<!--                <li>-->
+<!--                  <a class="dropdown-item" href="{ % url 'AutomationEditView' item.id %}"><i class="bi bi-sliders"></i> Editar</a>-->
+<!--                </li>-->
                 <li><hr class="dropdown-divider"></li>
                 <li>
-                  <a class="dropdown-item" href="#" @click.once="deleteConfirm('{% url 'CompanyDeleteAction' item.id  %}')">
+                  <a class="dropdown-item" href="#" @click.once="deleteConfirm('{% url 'AutomationDeleteAction' item.id  %}')">
                     <i class="bi bi-x-circle"></i> Excluir
                   </a>
                 </li>
@@ -84,19 +103,16 @@
       {% endif %}
     </div>
     <div class="col-lg-12">
-      <a href="{% url 'CompanyNewView' %}" class="btn btn-primary">
-        <i class="bx bxs-plus-circle"></i> Nova empresa
+      <a href="{% url 'AutomationNewAction' %}" class="btn btn-primary">
+        <i class="bx bxs-plus-circle"></i> Nova Automação
       </a>
     </div>
   </div>
-
-
-
 </section>
 {% endblock %}
 
 {% block js %}
 <script>
-  console.log("{{ DOMAIN_ASSETS }}/company/{{ item.picture }}.png");
+
 </script>
 {% endblock %}

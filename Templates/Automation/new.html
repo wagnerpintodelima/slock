@@ -24,6 +24,14 @@
           <!-- Vertical Form -->
           <form class="row g-3" method="post" action="{% url 'AutomationSaveAction' %}">
             {% csrf_token %}
+            <div class="col-lg-12">
+              <label for="company_id" class="form-label">Empresa/Cliente</label>
+              <select id="company_id" class="form-select" required name="company_id">
+                {% for c in companies %}
+                <option value="{{ c.id }}">{{ c.nome_fantasia | capfirst }}</option>
+                {% endfor %}
+              </select>
+            </div>
             <div class="col-lg-6">
               <label for="inputNanme4" class="form-label">Tipo</label>
               <select id="inputNanme4" class="form-select" required name="name">
