@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Automação - Novo{% endblock %}
+{% block title %}Automação - Editar{% endblock %}
 
 
 {% block body %}
@@ -22,58 +22,59 @@
         <div class="card-body">
           <h5 class="card-title">Cadastro</h5>
           <!-- Vertical Form -->
-          <form class="row g-3" method="post" action="{% url 'AutomationSaveAction' %}">
+          <form class="row g-3" method="post" action="{% url 'AutomationEditAction' %}">
             {% csrf_token %}
+            <input type="hidden" name="automacao_id" value="{{ item.id }}">
             <div class="col-lg-12">
               <label for="company_id" class="form-label">Empresa/Cliente</label>
               <select id="company_id" class="form-select" required name="company_id">
                 {% for c in companies %}
-                <option value="{{ c.id }}">{{ c.nome_fantasia | capfirst }}</option>
+                <option value="{{ c.id }}" {% if c.id == item.company.id %}selected{% endif %}>{{ c.nome_fantasia | capfirst }}</option>
                 {% endfor %}
               </select>
             </div>
             <div class="col-lg-6">
               <label for="inputNanme4" class="form-label">Tipo</label>
               <select id="inputNanme4" class="form-select" required name="name">
-                <option value="slocker">Slock</option>
-                <option value="light">Luz</option>
-                <option value="gate">Portão</option>
-                <option value="door">Porta</option>
+                <option value="slocker" {% if 0 == item.name %}selected{% endif %}>Slock</option>
+                <option value="light" {% if 1 == item.name %}selected{% endif %}>Luz</option>
+                <option value="gate" {% if 2 == item.name %}selected{% endif %}>Portão</option>
+                <option value="door" {% if 3 == item.name %}selected{% endif %}>Porta</option>
               </select>
             </div>
             <div class="col-lg-6">
               <label for="inputAddress" class="form-label">Nome Curto</label>
-              <input type="text" class="form-control" id="inputAddress" placeholder="Short name" required name="short_name">
+              <input type="text" class="form-control" id="inputAddress" placeholder="Short name" required name="short_name" value="{{ item.short_name }}">
             </div>
             <div class="col-lg-6">
               <label for="inputNanme5" class="form-label">IP</label>
-              <input type="text" class="form-control" id="inputNanme5" placeholder="IP: xxx.xxx.xxx.xxx" name="ip">
+              <input type="text" class="form-control" id="inputNanme5" placeholder="IP: xxx.xxx.xxx.xxx" name="ip" value="{{ item.ip }}">
             </div>
             <div class="col-lg-6">
               <label for="inputNanme6" class="form-label">Subnet</label>
-              <input type="text" class="form-control" id="inputNanme6" placeholder="Subnet: xxx.xxx.xxx.xxx" name="subnet">
+              <input type="text" class="form-control" id="inputNanme6" placeholder="Subnet: xxx.xxx.xxx.xxx" name="subnet" value="{{ item.subnet }}">
             </div>
             <div class="col-lg-6">
               <label for="inputNanme7" class="form-label">Gateway</label>
-              <input type="text" class="form-control" id="inputNanme7" placeholder="Gateway: xxx.xxx.xxx.xxx" name="gateway">
+              <input type="text" class="form-control" id="inputNanme7" placeholder="Gateway: xxx.xxx.xxx.xxx" name="gateway" value="{{ item.gateway }}">
             </div>
             <div class="col-lg-6">
               <label for="inputNanme9" class="form-label">Mac</label>
-              <input type="text" class="form-control" id="inputNanme9" placeholder="MAC: CA:FE:CO:FF:EE:EE" required name="mac">
+              <input type="text" class="form-control" id="inputNanme9" placeholder="MAC: CA:FE:CO:FF:EE:EE" required name="mac" value="{{ item.mac }}">
             </div>
             <div class="col-lg-6">
               <label for="inputNanme8" class="form-label">Local Instalação</label>
               <select id="inputNanme8" class="form-select" required name="name">
-                <option value="0">Garagem</option>
-                <option value="1">Hall de Entrada</option>
-                <option value="2">Hall de Saída</option>
-                <option value="3">Salão de Festa</option>
-                <option value="4">Outros</option>
+                <option value="0" {% if 0 == item.type_location %}selected{% endif %}>Garagem</option>
+                <option value="1" {% if 1 == item.type_location %}selected{% endif %}>Hall de Entrada</option>
+                <option value="2" {% if 2 == item.type_location %}selected{% endif %}>Hall de Saída</option>
+                <option value="3" {% if 3 == item.type_location %}selected{% endif %}>Salão de Festa</option>
+                <option value="4" {% if 4 == item.type_location %}selected{% endif %}>Outros</option>
               </select>
             </div>
              <div class="col-lg-6">
               <label for="description" class="form-label">Descrição</label>
-              <textarea id="description" class="form-control" placeholder="Descrição" name="description"></textarea>
+              <textarea id="description" class="form-control" placeholder="Descrição" name="description">{{ item.description }}</textarea>
             </div>
             <div class="col-lg-12 d-flex justify-content-end">
               <div class="col-lg-11 col-xs-12">
@@ -83,7 +84,7 @@
               </div>
               <div class="col-lg-1 col-xs-12">
                 <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="" name="status" value="1">
+                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="" name="status" {% if item.status %}value="1"{% endif %}>
                   <label class="form-check-label" for="flexSwitchCheckChecked">Ativo</label>
                 </div>
               </div>
